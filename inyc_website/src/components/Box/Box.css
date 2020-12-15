@@ -1,0 +1,13 @@
+.box {
+    background-color: goldenrod;
+    border: 1px solid darkgoldenrod;
+    padding: 10px;
+}
+
+.displayH {
+    display: inline-block;
+}
+
+.displayV {
+    display: block;
+}

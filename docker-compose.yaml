@@ -1,0 +1,21 @@
+version: "3"
+services:
+  inyc_server:
+    container_name: "inyc_server"
+    build: ./inyc_server/
+    ports:
+      - "3001:3001"
+  inyc_pg:
+    image: "postgres:12"
+    container_name: "postgres"
+    environment: 
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./inyc_pg/db_data:/var/lib/postgresql/data
+  inyc_website:
+    container_name: "inyc_website"
+    build: ./inyc_website/
+    ports:
+      - "3000:3000"
