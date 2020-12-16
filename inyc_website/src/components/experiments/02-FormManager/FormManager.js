@@ -3,6 +3,7 @@ import Box from '../../Box/Box';
 import './FormManager.css';
 // import WindowContextProvider, { WindowContext } from './WindowContext';
 import WindowManager, { WindowContext } from './WindowManager';
+import WindowNavBtn from './WindowNavBtn';
 
 const FormManager = () => {
     const thisRef = useRef()
@@ -46,41 +47,37 @@ const FormManager = () => {
                         onChange={onChange} 
                         name="lastname" 
                         placeholder="lastname"/>
-                    <WindowContext.Consumer>
-                        { window => {
-                            return (
-                                <div>
-                                    <button className="btn-prev" name="btn-prev" onClick={window.handleClick}>prev</button> 
-                                    <button className="btn-next" name="btn-next" onClick={window.handleClick}>next</button> 
-                                </div>
-                            )
-                        }}
-                    </WindowContext.Consumer>
+                    
+                        <WindowNavBtn direction="prev"/> 
+                        <WindowNavBtn direction="next"/> 
                 </Box>
-                <Box><h1>Box Two</h1>
-                    <WindowContext.Consumer>
-                        { window => {
-                            return (
-                                <div>
-                                    <button className="btn-prev" name="btn-prev" onClick={window.handleClick}>prev</button> 
-                                    <button className="btn-next" name="btn-next" onClick={window.handleClick}>next</button> 
-                                </div>
-                            )
-                        }}
-                    </WindowContext.Consumer>
+                <Box height="200"><h1>Box Two</h1>
+                    <input type="text" 
+                        onChange={onChange} 
+                        name="firstname" 
+                        placeholder="firstname"/>
+                    <input type="text" 
+                        onChange={onChange} 
+                        name="lastname" 
+                        placeholder="lastname"/>
+                    
+                        <WindowNavBtn direction="prev"/> 
+                        <WindowNavBtn direction="next"/> 
                 </Box>
-                <Box><h1>Box Three</h1>
-                    <WindowContext.Consumer>
-                        { window => {
-                            return (
-                                <div>
-                                    <button className="btn-prev" name="btn-prev" onClick={window.handleClick}>prev</button> 
-                                    <button className="btn-next" name="btn-next" onClick={window.handleClick}>next</button> 
-                                </div>
-                            )
-                        }}
-                    </WindowContext.Consumer>
+                <Box height="200"><h1>Box Three</h1>
+                    <input type="text" 
+                        onChange={onChange} 
+                        name="firstname" 
+                        placeholder="firstname"/>
+                    <input type="text" 
+                        onChange={onChange} 
+                        name="lastname" 
+                        placeholder="lastname"/>
+                    
+                        <WindowNavBtn direction="prev"/> 
+                        <WindowNavBtn direction="next"/> 
                 </Box>
+                
             </WindowManager>
         </div>
      );

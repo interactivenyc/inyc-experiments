@@ -20,9 +20,9 @@ const WindowManager = (props) => {
         childrenArray[currentIndex].current.classList.add('window-reveal')
     })
 
-    const handleClick = (event) => {
-        console.log("[WindowManager] handleClick", event.target.name);
-        if (event.target.name === "btn-next") {
+    const handleClick = (direction) => {
+        console.log("[WindowManager] handleClick", direction);
+        if (direction === "next") {
             setCurrentIndex(currentIndex + 1);
         } else {
             setCurrentIndex(currentIndex - 1);
@@ -30,7 +30,7 @@ const WindowManager = (props) => {
     }
 
     return ( 
-        <WindowContext.Provider value={{ handleClick }}>
+        <WindowContext.Provider value={handleClick}>
             <div className='window-frame' ref={windowFrame}>
                 {props.children.map((child, index) => {
                     return (index === currentIndex) ?
