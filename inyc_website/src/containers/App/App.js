@@ -2,27 +2,32 @@ import React, { useEffect, useState } from "react";
 import Header from '../../components/Header/Header';
 import './App.css';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link,
+  useLocation
+} from "react-router-dom";
+
 import Home from "../../components/Home/Home";
 import FormManager from "../../components/experiments/02-FormManager/FormManager";
 import TestQuery from "../../components/experiments/01-TestQuery/TestQuery";
 
-const App = () => {
+const App = (props) => {
+
   const [ state, setState ] = useState({
-    navIndex: 0,
-    navItems: [
-      "Home",
-      "Form Manager",
-      "Test Query (requires postgres)"
-    ],
-    navComponents: [
-      Home,
-      FormManager,
-      TestQuery
-    ]
+    navIndex: 0
   })
 
+  const location = useLocation()
+  console.log('[App] location', location);
+
+  const navItems = ["Home", "Form Manager", "Test Query (requires postgres)"]
+  // const navPaths = ["/", "/formManager", "/testQuery"]
+
   useEffect(() => {
-    console.log('[App] useEffect')
+    console.log('[App] useEffect', props)
   })
 
   const handleNav = (index) => {
@@ -30,25 +35,25 @@ const App = () => {
     setState({...state, navIndex: index})
   }
 
-  const renderSwitch = () => {
-    switch (state.navIndex) {
-      case 0:
-        return <Home></Home>
-      case 1:
-        return <FormManager></FormManager>
-      case 2:
-        return <TestQuery></TestQuery>
-      default:
-        break;
-    }
-  }
-
   return ( 
-    <div className="app">
-      <Header navItems={state.navItems} handleNav={handleNav} />
-      {renderSwitch()}
-      
-    </div>
+    <Router>
+      <div className="app">
+        <Header navItems={navItems} handleNav={handleNav} />
+
+        <Switch>
+          <Route path="/formManager">
+            <FormManager />
+          </Route>
+          <Route path="/testQuery">
+            <TestQuery />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        
+      </div>
+      </Router>
   );
 }
  

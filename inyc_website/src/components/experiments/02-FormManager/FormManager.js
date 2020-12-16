@@ -10,8 +10,7 @@ const FormManager = () => {
     })
 
     useEffect(() => {
-        console.log("[FormManager] width:", thisRef.current.offsetWidth)
-        console.log('state', state);
+        console.log("[FormManager] width/state:", thisRef.current.offsetWidth, state)
     })
 
     const onChange = (event) => {
@@ -37,20 +36,16 @@ const FormManager = () => {
         <div className='form-manager' ref={thisRef}>
             <h1>Form Windows (to animate)</h1>
             
-            <Box height="200" display="displayH">
-                <Box display="displayH">
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="firstname" 
-                        placeholder="firstname"/>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="lastname" 
-                        placeholder="lastname"/>
-                </Box>
-                <Box display="displayV">
-                    <button name="btn-name" onClick={handleClick}>next</button>
-                </Box>
+            <Box height="200">
+                <input type="text" 
+                    onChange={onChange} 
+                    name="firstname" 
+                    placeholder="firstname"/>
+                <input type="text" 
+                    onChange={onChange} 
+                    name="lastname" 
+                    placeholder="lastname"/>
+                <button name="btn-name" onClick={handleClick}>next</button>
             </Box>
             <Box>Box Two</Box>
             <Box>Box Three</Box>
