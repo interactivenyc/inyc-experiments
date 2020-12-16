@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Box from '../../Box/Box';
-import './FormManager.css'
+import './FormManager.css';
+import WindowManager from './WindowManager';
 
 const FormManager = () => {
     const thisRef = useRef()
@@ -35,20 +36,21 @@ const FormManager = () => {
     return ( 
         <div className='form-manager' ref={thisRef}>
             <h1>Form Windows (to animate)</h1>
-            
-            <Box height="200">
-                <input type="text" 
-                    onChange={onChange} 
-                    name="firstname" 
-                    placeholder="firstname"/>
-                <input type="text" 
-                    onChange={onChange} 
-                    name="lastname" 
-                    placeholder="lastname"/>
-                <button name="btn-name" onClick={handleClick}>next</button>
-            </Box>
-            <Box>Box Two</Box>
-            <Box>Box Three</Box>
+            <WindowManager>
+                <Box height="200">
+                    <input type="text" 
+                        onChange={onChange} 
+                        name="firstname" 
+                        placeholder="firstname"/>
+                    <input type="text" 
+                        onChange={onChange} 
+                        name="lastname" 
+                        placeholder="lastname"/>
+                    <button name="btn-name" onClick={handleClick}>next</button>
+                </Box>
+                <Box>Box Two</Box>
+                <Box>Box Three</Box>
+            </WindowManager>
         </div>
      );
 }

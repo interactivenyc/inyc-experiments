@@ -53,7 +53,7 @@ const App = (props) => {
         </Switch>
         
       </div>
-      </Router>
+    </Router>
   );
 }
  
