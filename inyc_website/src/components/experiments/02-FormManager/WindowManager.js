@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import './WindowManager.css';
 
 const WindowManager = (props) => {
@@ -8,15 +8,24 @@ const WindowManager = (props) => {
     let windowFrame = createRef()
 
     React.Children.map(props.children, (child) => {
-        console.log("child", child);
+        // console.log("child", child);
         childrenArray.push(createRef())
     })
 
     useEffect(() => {
-        console.log('[WindowManager] useEffect reveal');
+        console.log('[WindowManager] useEffect');
         windowFrame.current.style.width='400px'
         childrenArray[currentIndex].current.classList.add('window-reveal')
+
+        // childrenArray[currentIndex].current.querySelectorAll("button")[0].addEventListener('click', handleClick);
+        // return function cleanup() {
+        //     childrenArray[currentIndex].current.querySelectorAll("button")[0].removeEventListener('click', handleClick);
+        // }
     })
+
+    const handleClick = (event) => {
+        console.log("[WindowManager] handleClick");
+    }
 
     return ( 
         <div className='window-frame' ref={windowFrame}>

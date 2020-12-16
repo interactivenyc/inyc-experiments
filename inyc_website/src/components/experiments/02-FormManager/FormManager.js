@@ -5,6 +5,7 @@ import WindowManager from './WindowManager';
 
 const FormManager = () => {
     const thisRef = useRef()
+
     const [ state, setState ] = useState({
         firstname: '',
         lastname: ''
@@ -46,7 +47,7 @@ const FormManager = () => {
                         onChange={onChange} 
                         name="lastname" 
                         placeholder="lastname"/>
-                    <button name="btn-name" onClick={handleClick}>next</button>
+                    <button className="btn-next" name="btn-name" onClick={handleClick}>next</button>
                 </Box>
                 <Box>Box Two</Box>
                 <Box>Box Three</Box>
