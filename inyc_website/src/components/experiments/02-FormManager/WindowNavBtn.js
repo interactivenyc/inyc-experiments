@@ -6,7 +6,6 @@ const WindowNavBtn = (props) => {
     console.log('[WindowNavBtn] handleClick', handleClick);
     
     return ( 
-
         <button onClick={() => handleClick(props.direction)}>{props.direction}</button>
      );
 }

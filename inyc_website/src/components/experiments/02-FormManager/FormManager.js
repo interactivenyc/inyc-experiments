@@ -48,7 +48,6 @@ const FormManager = () => {
                         name="lastname" 
                         placeholder="lastname"/>
                     
-                        <WindowNavBtn direction="prev"/> 
                         <WindowNavBtn direction="next"/> 
                 </Box>
                 <Box height="200"><h1>Box Two</h1>
@@ -75,7 +74,6 @@ const FormManager = () => {
                         placeholder="lastname"/>
                     
                         <WindowNavBtn direction="prev"/> 
-                        <WindowNavBtn direction="next"/> 
                 </Box>
                 
             </WindowManager>

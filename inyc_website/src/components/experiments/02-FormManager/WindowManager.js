@@ -7,7 +7,7 @@ const WindowManager = (props) => {
     console.log('[WindowManager] children', props.children);
     const [ currentIndex, setCurrentIndex] = useState(0)
     let childrenArray = []
-    let windowFrame = createRef()
+    let windows = createRef()
 
     React.Children.map(props.children, (child) => {
         // console.log("child", child);
@@ -15,9 +15,9 @@ const WindowManager = (props) => {
     })
 
     useEffect(() => {
-        console.log('[WindowManager] useEffect');
-        windowFrame.current.style.width='400px'
-        childrenArray[currentIndex].current.classList.add('window-reveal')
+        console.log('[WindowManager] useEffect show', currentIndex, 'pos', childrenArray[currentIndex].current);
+        let newPos = (-400 * (currentIndex)) + "px"
+        windows.current.style['margin-left'] = newPos
     })
 
     const handleClick = (direction) => {
@@ -31,13 +31,12 @@ const WindowManager = (props) => {
 
     return ( 
         <WindowContext.Provider value={handleClick}>
-            <div className='window-frame' ref={windowFrame}>
-                {props.children.map((child, index) => {
-                    return (index === currentIndex) ?
-                        <div key={index} ref={childrenArray[index]} className='window'>{child}</div>
-                    : 
-                        <div key={index} ref={childrenArray[index]} style={{display: 'none'}}>{child}</div>
-                })}
+            <div className='window-frame'>
+                <div className='windows' ref={windows}>
+                    {props.children.map((child, index) => {
+                        return <div key={index} ref={childrenArray[index]} className='window'>{child}</div>
+                    })}
+                </div>
             </div>
         </WindowContext.Provider>
      );
