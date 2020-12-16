@@ -37,7 +37,7 @@ const FormManager = () => {
         <div className='form-manager' ref={thisRef}>
             <h1>Form Windows (to animate)</h1>
             <WindowManager>
-                <Box height="200">
+                <Box height="200"><h1>Box One</h1>
                     <input type="text" 
                         onChange={onChange} 
                         name="firstname" 
@@ -57,7 +57,7 @@ const FormManager = () => {
                         }}
                     </WindowContext.Consumer>
                 </Box>
-                <Box>
+                <Box><h1>Box Two</h1>
                     <WindowContext.Consumer>
                         { window => {
                             return (
@@ -69,7 +69,18 @@ const FormManager = () => {
                         }}
                     </WindowContext.Consumer>
                 </Box>
-                <Box>Box Three</Box>
+                <Box><h1>Box Three</h1>
+                    <WindowContext.Consumer>
+                        { window => {
+                            return (
+                                <div>
+                                    <button className="btn-prev" name="btn-prev" onClick={window.handleClick}>prev</button> 
+                                    <button className="btn-next" name="btn-next" onClick={window.handleClick}>next</button> 
+                                </div>
+                            )
+                        }}
+                    </WindowContext.Consumer>
+                </Box>
             </WindowManager>
         </div>
      );
