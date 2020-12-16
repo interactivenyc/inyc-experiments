@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Box from '../../Box/Box';
 import './FormManager.css';
-import WindowManager from './WindowManager';
+// import WindowContextProvider, { WindowContext } from './WindowContext';
+import WindowManager, { WindowContext } from './WindowManager';
 
 const FormManager = () => {
     const thisRef = useRef()
@@ -24,15 +25,13 @@ const FormManager = () => {
             case 'lastname':
                 setState({...state, lastname: event.target.value})
                 break
-                default:
-        }
-       
-        
+            default:
+        }        
     }
 
-    const handleClick = (event) => {
-        console.log('handleClick', event.target.name);
-    }
+    // const handleClick = (event) => {
+    //     console.log('handleClick', event.target.name);
+    // }
 
     return ( 
         <div className='form-manager' ref={thisRef}>
@@ -47,9 +46,29 @@ const FormManager = () => {
                         onChange={onChange} 
                         name="lastname" 
                         placeholder="lastname"/>
-                    <button className="btn-next" name="btn-name" onClick={handleClick}>next</button>
+                    <WindowContext.Consumer>
+                        { window => {
+                            return (
+                                <div>
+                                    <button className="btn-prev" name="btn-prev" onClick={window.handleClick}>prev</button> 
+                                    <button className="btn-next" name="btn-next" onClick={window.handleClick}>next</button> 
+                                </div>
+                            )
+                        }}
+                    </WindowContext.Consumer>
                 </Box>
-                <Box>Box Two</Box>
+                <Box>
+                    <WindowContext.Consumer>
+                        { window => {
+                            return (
+                                <div>
+                                    <button className="btn-prev" name="btn-prev" onClick={window.handleClick}>prev</button> 
+                                    <button className="btn-next" name="btn-next" onClick={window.handleClick}>next</button> 
+                                </div>
+                            )
+                        }}
+                    </WindowContext.Consumer>
+                </Box>
                 <Box>Box Three</Box>
             </WindowManager>
         </div>

@@ -1,9 +1,11 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createContext, createRef, useEffect, useState } from 'react';
 import './WindowManager.css';
+
+export const WindowContext = createContext()
 
 const WindowManager = (props) => {
     console.log('[WindowManager] children', props.children);
-    let currentIndex = 0
+    const [ currentIndex, setCurrentIndex] = useState(0)
     let childrenArray = []
     let windowFrame = createRef()
 
@@ -16,26 +18,28 @@ const WindowManager = (props) => {
         console.log('[WindowManager] useEffect');
         windowFrame.current.style.width='400px'
         childrenArray[currentIndex].current.classList.add('window-reveal')
-
-        // childrenArray[currentIndex].current.querySelectorAll("button")[0].addEventListener('click', handleClick);
-        // return function cleanup() {
-        //     childrenArray[currentIndex].current.querySelectorAll("button")[0].removeEventListener('click', handleClick);
-        // }
     })
 
     const handleClick = (event) => {
-        console.log("[WindowManager] handleClick");
+        console.log("[WindowManager] handleClick", event.target.name);
+        if (event.target.name === "btn-next") {
+            setCurrentIndex(currentIndex + 1);
+        } else {
+            setCurrentIndex(currentIndex - 1);
+        }
     }
 
     return ( 
-        <div className='window-frame' ref={windowFrame}>
-            {props.children.map((child, index) => {
-                return (index === currentIndex) ?
-                    <div key={index} ref={childrenArray[index]} className='window'>{child}</div>
-                : 
-                    <div key={index} ref={childrenArray[index]} style={{display: 'none'}}>{child}</div>
-            })}
-        </div>
+        <WindowContext.Provider value={{ handleClick }}>
+            <div className='window-frame' ref={windowFrame}>
+                {props.children.map((child, index) => {
+                    return (index === currentIndex) ?
+                        <div key={index} ref={childrenArray[index]} className='window'>{child}</div>
+                    : 
+                        <div key={index} ref={childrenArray[index]} style={{display: 'none'}}>{child}</div>
+                })}
+            </div>
+        </WindowContext.Provider>
      );
 }
  
