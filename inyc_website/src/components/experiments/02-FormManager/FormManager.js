@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import Box from '../../Box/Box';
 import './FormManager.css';
 // import WindowContextProvider, { WindowContext } from './WindowContext';
-import WindowManager, { WindowContext } from './WindowManager';
+import WindowManager from './WindowManager';
 import WindowNavBtn from './WindowNavBtn';
 
 const FormManager = () => {
     const thisRef = useRef()
 
     const [ state, setState ] = useState({
-        firstname: '',
+        firstname: 'first',
         lastname: ''
     })
 
@@ -30,50 +30,59 @@ const FormManager = () => {
         }        
     }
 
-    // const handleClick = (event) => {
-    //     console.log('handleClick', event.target.name);
-    // }
-
     return ( 
         <div className='form-manager' ref={thisRef}>
             <h1>Form Windows (to animate)</h1>
             <WindowManager>
-                <Box height="200"><h1>Box One</h1>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="firstname" 
-                        placeholder="firstname"/>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="lastname" 
-                        placeholder="lastname"/>
+                <Box height="200">
+                    <h1>Box One</h1>
+                    <div className='horiz'>
+                        <input type="text" 
+                            onChange={onChange} 
+                            name="firstname" 
+                            value={state.firstname}
+                            placeholder="firstname"/>
+                        <input type="text" 
+                            onChange={onChange} 
+                            name="lastname" 
+                            value={state.lastname}
+                            placeholder="lastname"/>
+                    </div>
                     
-                        <WindowNavBtn direction="next"/> 
+                    <WindowNavBtn direction="next"/> 
                 </Box>
-                <Box height="200"><h1>Box Two</h1>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="firstname" 
-                        placeholder="firstname"/>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="lastname" 
-                        placeholder="lastname"/>
-                    
-                        <WindowNavBtn direction="prev"/> 
-                        <WindowNavBtn direction="next"/> 
+                <Box height="200">
+                    <h1>Box Two</h1>
+                    <div className='horiz'>
+                        <input type="text" 
+                            onChange={onChange} 
+                            name="firstname" 
+                            value={state.firstname}
+                            placeholder="firstname"/>
+                        <input type="text" 
+                            onChange={onChange} 
+                            name="lastname" 
+                            value={state.lastname}
+                            placeholder="lastname"/>
+                    </div>
+                    <WindowNavBtn direction="prev"/> 
+                    <WindowNavBtn direction="next"/> 
                 </Box>
-                <Box height="200"><h1>Box Three</h1>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="firstname" 
-                        placeholder="firstname"/>
-                    <input type="text" 
-                        onChange={onChange} 
-                        name="lastname" 
-                        placeholder="lastname"/>
-                    
-                        <WindowNavBtn direction="prev"/> 
+                <Box height="200">
+                    <h1>Box Three</h1>
+                    <div className='horiz'>
+                        <input type="text" 
+                            onChange={onChange} 
+                            name="firstname" 
+                            value={state.firstname}
+                            placeholder="firstname"/>
+                        <input type="text" 
+                            onChange={onChange} 
+                            name="lastname" 
+                            value={state.lastname}
+                            placeholder="lastname"/>
+                    </div>
+                    <WindowNavBtn direction="prev"/> 
                 </Box>
                 
             </WindowManager>

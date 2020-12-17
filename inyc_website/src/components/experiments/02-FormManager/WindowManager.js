@@ -15,10 +15,37 @@ const WindowManager = (props) => {
     })
 
     useEffect(() => {
-        console.log('[WindowManager] useEffect show', currentIndex, 'pos', childrenArray[currentIndex].current);
-        let newPos = (-400 * (currentIndex)) + "px"
+        console.log('[WindowManager] useEffect show', currentIndex, 'pos', childrenArray[currentIndex].current.style.left);
+        
+        let newPos = getCalculatedWidth() + "px"
+        // let newPos = (-420 * (currentIndex)) + "px"
+        // let newPos = (-childrenArray[currentIndex].current.offsetLeft) + "px"
+
+
+        for (let child in childrenArray){
+            // console.log("child width/height", child.current.offsetWidth, child.current.offsetHeight);
+
+            console.log("child width/height", childrenArray[child].current.offsetWidth, childrenArray[child].current.offsetHeight);
+            console.log("child offsetLeft", childrenArray[child].current.offsetLeft);
+            console.log("child child", childrenArray[child].current.getBoundingClientRect());
+
+        }
+        // let newPos = (childrenArray[currentIndex].current.style.left) + "px"
+        
         windows.current.style['margin-left'] = newPos
     })
+
+    const getCalculatedWidth = () => {
+        let result = 0;
+
+        if (currentIndex > 0){
+            for (let x = 0; x<currentIndex; x++){
+                result -= childrenArray[x].current.offsetWidth
+            }
+        }
+
+        return result;
+    }
 
     const handleClick = (direction) => {
         console.log("[WindowManager] handleClick", direction);

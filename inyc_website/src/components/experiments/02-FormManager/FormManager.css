@@ -24,3 +24,7 @@
 .form-manager button:focus {
     outline: none;
 }
+
+h1 {
+    white-space: nowrap;
+}

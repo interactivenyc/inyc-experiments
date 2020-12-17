@@ -1,6 +1,11 @@
 .box {
-    display: inline-block;
+    /* display: flex; */
     background-color: goldenrod;
     border: 1px solid darkgoldenrod;
     padding: 10px;
+    /* width: 200px; */
+}
+
+.horiz {
+    display: flex;
 }

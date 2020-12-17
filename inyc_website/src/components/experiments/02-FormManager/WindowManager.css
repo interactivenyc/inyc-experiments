@@ -1,16 +1,30 @@
 .window-frame {
-    width: 400px;
+    display: flex;
+
+    border: 4px solid red;
+    padding: 4px;
+
+    width: 450px;
     overflow: hidden;
 }
 
 .windows {
-    width: 1200px;
-    margin-left: 0px;
+    display: flex;
+    border: 4px solid green;
+    padding: 4px;
+
+    /* width: 1200px; */
+    /* margin-left: -100px; */
     transition: all .5s;
 }
 
 .window {
+
+    border: 4px solid blue;
+    padding: 4px;
+
     /* opacity: 0%; */
-    display: inline-block;
-    width: 400px;
+    /* display: flex; */
+    /* display: inline-block; */
+    /* width: 400px; */
 }
