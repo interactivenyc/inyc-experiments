@@ -3,9 +3,8 @@
     background-color: goldenrod;
     border: 1px solid darkgoldenrod;
     padding: 10px;
-    /* width: 200px; */
 }
 
-.horiz {
+.flex-h {
     display: flex;
 }

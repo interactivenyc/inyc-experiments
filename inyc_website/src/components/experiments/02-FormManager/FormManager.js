@@ -36,7 +36,7 @@ const FormManager = () => {
             <WindowManager>
                 <Box height="200">
                     <h1>Box One</h1>
-                    <div className='horiz'>
+                    <div className='flex-h'>
                         <input type="text" 
                             onChange={onChange} 
                             name="firstname" 
@@ -51,9 +51,9 @@ const FormManager = () => {
                     
                     <WindowNavBtn direction="next"/> 
                 </Box>
-                <Box height="200">
+                <Box height="150">
                     <h1>Box Two</h1>
-                    <div className='horiz'>
+                    <div className='flex-h'>
                         <input type="text" 
                             onChange={onChange} 
                             name="firstname" 
@@ -70,7 +70,7 @@ const FormManager = () => {
                 </Box>
                 <Box height="200">
                     <h1>Box Three</h1>
-                    <div className='horiz'>
+                    <div className='flex-h'>
                         <input type="text" 
                             onChange={onChange} 
                             name="firstname" 

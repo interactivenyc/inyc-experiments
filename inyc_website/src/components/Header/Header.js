@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Header.css'
 
 const Header = props => {
-  console.log('[Header] props', props)
+  // console.log('[Header] props', props)
 
   const handleSelect = (event) => {
     console.log('[Header] handleSelect', event.target.name, event.target.value);

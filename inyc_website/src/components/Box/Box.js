@@ -5,7 +5,7 @@ const Box = (props) => {
     const thisDiv = useRef()
 
     useEffect(() => {
-        console.log("Box", props, "width:", thisDiv.current.offsetWidth)
+        // console.log("Box", props, "width:", thisDiv.current.offsetWidth)
         props.height ? 
             thisDiv.current.style.height = (props.height + "px")
             : thisDiv.current.style.height = "100px"

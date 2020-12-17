@@ -6,44 +6,33 @@ export const WindowContext = createContext()
 const WindowManager = (props) => {
     console.log('[WindowManager] children', props.children);
     const [ currentIndex, setCurrentIndex] = useState(0)
-    let childrenArray = []
-    let windows = createRef()
+
+    let windowFrame = createRef()
+    let windowTransport = createRef()
+    let windowArray = []
+    // let windowHeights = []
 
     React.Children.map(props.children, (child) => {
         // console.log("child", child);
-        childrenArray.push(createRef())
+        windowArray.push(createRef())
     })
 
     useEffect(() => {
-        console.log('[WindowManager] useEffect show', currentIndex, 'pos', childrenArray[currentIndex].current.style.left);
+        console.log('[WindowManager] useEffect show', currentIndex, 'pos', windowArray[currentIndex].current.style.left);
         
-        let newPos = getCalculatedWidth() + "px"
-        // let newPos = (-420 * (currentIndex)) + "px"
-        // let newPos = (-childrenArray[currentIndex].current.offsetLeft) + "px"
+        let newPos = getWindowPosition() + "px"
+        windowTransport.current.style['margin-left'] = newPos
 
-
-        for (let child in childrenArray){
-            // console.log("child width/height", child.current.offsetWidth, child.current.offsetHeight);
-
-            console.log("child width/height", childrenArray[child].current.offsetWidth, childrenArray[child].current.offsetHeight);
-            console.log("child offsetLeft", childrenArray[child].current.offsetLeft);
-            console.log("child child", childrenArray[child].current.getBoundingClientRect());
-
-        }
-        // let newPos = (childrenArray[currentIndex].current.style.left) + "px"
-        
-        windows.current.style['margin-left'] = newPos
+        // windowFrame.current.style.height = windowHeights[currentIndex] + 'px'
     })
 
-    const getCalculatedWidth = () => {
+    const getWindowPosition = () => {
         let result = 0;
-
         if (currentIndex > 0){
             for (let x = 0; x<currentIndex; x++){
-                result -= childrenArray[x].current.offsetWidth
+                result -= windowArray[x].current.offsetWidth
             }
         }
-
         return result;
     }
 
@@ -58,10 +47,11 @@ const WindowManager = (props) => {
 
     return ( 
         <WindowContext.Provider value={handleClick}>
-            <div className='window-frame'>
-                <div className='windows' ref={windows}>
+            <div className='window-frame' ref={windowFrame}>
+                <div className='windows' ref={windowTransport}>
                     {props.children.map((child, index) => {
-                        return <div key={index} ref={childrenArray[index]} className='window'>{child}</div>
+                        // windowHeights.push(child.props.height)
+                        return <div key={index} ref={windowArray[index]} className='window'>{child}</div>
                     })}
                 </div>
             </div>
