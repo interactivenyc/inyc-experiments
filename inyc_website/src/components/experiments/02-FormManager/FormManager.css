@@ -1,3 +1,7 @@
+:root {
+    --frame-width: 450px;
+}
+
 .form-manager {
     height: 500px;
     padding: 20px;

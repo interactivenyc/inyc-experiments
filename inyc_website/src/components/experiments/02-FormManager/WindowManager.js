@@ -10,7 +10,7 @@ const WindowManager = (props) => {
     let windowFrame = createRef()
     let windowTransport = createRef()
     let windowArray = []
-    // let windowHeights = []
+    let windowHeights = []
 
     React.Children.map(props.children, (child) => {
         // console.log("child", child);
@@ -23,7 +23,7 @@ const WindowManager = (props) => {
         let newPos = getWindowPosition() + "px"
         windowTransport.current.style['margin-left'] = newPos
 
-        // windowFrame.current.style.height = windowHeights[currentIndex] + 'px'
+        windowFrame.current.style.height = windowHeights[currentIndex] + 'px'
     })
 
     const getWindowPosition = () => {
@@ -50,7 +50,7 @@ const WindowManager = (props) => {
             <div className='window-frame' ref={windowFrame}>
                 <div className='windows' ref={windowTransport}>
                     {props.children.map((child, index) => {
-                        // windowHeights.push(child.props.height)
+                        windowHeights.push(child.props.height)
                         return <div key={index} ref={windowArray[index]} className='window'>{child}</div>
                     })}
                 </div>
