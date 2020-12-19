@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 build
+.eslintcache
+
 inyc_pg/db_data
 
 temp.txt

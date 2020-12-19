@@ -3,18 +3,22 @@ import Header from '../../components/Header/Header';
 import './App.css';
 
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   // Link,
-  useLocation
+  useLocation,
+  useHistory
 } from "react-router-dom";
 
 import Home from "../../components/Home/Home";
 import FormManager from "../../components/experiments/02-FormManager/FormManager";
+import FM2 from "../../components/experiments/03-ExtendsComponent/FormManager";
+import FM3 from "../../components/experiments/04-HOC/FormManager";
 import TestQuery from "../../components/experiments/01-TestQuery/TestQuery";
 
 const App = (props) => {
+
+  let history = useHistory()
 
   const [ state, setState ] = useState({
     navIndex: 0
@@ -23,26 +27,32 @@ const App = (props) => {
   const location = useLocation()
   console.log('[App] location', location);
 
-  const navItems = ["Home", "Form Manager", "Test Query (requires postgres)"]
-  // const navPaths = ["/", "/formManager", "/testQuery"]
+  const navItems = ["Home", "Form Manager", "FM2-Extends", "FM3-HOC", "Test Query (requires postgres)"]
+  const navPaths = ["/", "/formManager", "/fm2", "/fm3", "/testQuery"]
 
   useEffect(() => {
-    console.log('[App] useEffect', props)
+    console.log('[App] useEffect', state, location)
   })
 
   const handleNav = (index) => {
-    console.log('[App] handleNav', index)
+    console.log('[App] handleNav force', index)
     setState({...state, navIndex: index})
+    history.push(navPaths[index])
   }
 
   return ( 
-    <Router>
       <div className="app">
         <Header navItems={navItems} handleNav={handleNav} />
 
         <Switch>
           <Route path="/formManager">
             <FormManager />
+          </Route>
+          <Route path="/fm2">
+            <FM2 />
+          </Route>
+          <Route path="/fm3">
+            <FM3 />
           </Route>
           <Route path="/testQuery">
             <TestQuery />
@@ -53,7 +63,6 @@ const App = (props) => {
         </Switch>
         
       </div>
-    </Router>
   );
 }
  

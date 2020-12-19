@@ -22,4 +22,44 @@ code {
   margin: 10px;
 }
 
+input{
+  height: 24px;
+  padding: 5px;
+  margin: 5px;
+}
+input:focus{
+  outline: none;
+}
 
+button{
+  height: 32px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: darkgoldenrod;
+}
+
+button:focus {
+  outline: none;
+}
+
+h1 {
+  white-space: nowrap;
+}
+
+
+
+.box {
+  /* display: flex; */
+  background-color: goldenrod;
+  border: 1px solid darkgoldenrod;
+  padding: 10px;
+}
+
+.flex-h {
+  display: flex;
+  align-items: flex-start;
+}
