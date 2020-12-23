@@ -30,7 +30,7 @@ function windowManager(WrappedComponent, selectData) {
         componentDidMount() {
             // ... that takes care of the subscription...
             // DataSource.addChangeListener(this.handleChange);
-            let windowArray = document.getElementsByClassName('window-element')
+            let windowArray = this.state.windowFrame.current.getElementsByClassName('window-element')
 
             console.log('[WM init] windowArray', windowArray);
             
