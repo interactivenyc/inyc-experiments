@@ -1,15 +1,17 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+
     background-color: bisque;
     /* border: 1px solid blue; */
     /* height: 28px; */
     padding: 10px;
-    display: inline-block;
-    width: 100%;
+    /* width: 90%; */
 }
 
 .header select {
-    float: right;
-    margin-right: 20px;
+    /* float: right; */
+    /* margin-right: 20px; */
 
 }
 

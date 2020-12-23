@@ -1,3 +1,7 @@
+:root {
+    --frame-width: 450px;
+}
+
 .window-frame {
     display: flex;
 
@@ -7,6 +11,8 @@
     width: var(--frame-width);
     overflow: hidden;
     transition: all .5s;
+
+    height: 300px;
 }
 
 .windows {
@@ -21,7 +27,7 @@
 
 .window {
     
-    border: 4px solid blue;
+    /* border: 4px solid blue; */
     /* padding: 4px; */
 
     /* opacity: 0%; */
@@ -29,4 +35,8 @@
     /* display: inline-block; */
     /* width: 400px; */
     width: var(--frame-width);
+}
+
+.window-element {
+    /* This is just for targeting */
 }
