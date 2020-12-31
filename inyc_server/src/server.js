@@ -1,8 +1,22 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
 const app = express()
-const port = 3001
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+var path = require('path');
+const port = 3001;
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
+
+http.listen(3001, () => {
+  console.log('listening today on *:3001');
+});
+
 const Pool = require('pg').Pool
 const pool = new Pool({
   host: 'postgres',
@@ -11,16 +25,17 @@ const pool = new Pool({
   password: 'postgres',
   database: 'inycdata'
 })
+
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({ extended: true })
 )
-app.get('/', (request, response) => {
-  console.log('it works')
 
-  response.json({ info: 'It works!' })
-})
+
 app.get('/test_query', (request, response) => {
   console.log('test_query')
 
@@ -30,6 +45,5 @@ app.get('/test_query', (request, response) => {
     response.status(200).json(results.rows)
   })
 })
-app.listen(port, () => {
-  console.log(`i'm evil running on port ${port}.`)
-})
+
+

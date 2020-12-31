@@ -1,0 +1,55 @@
+@media (orientation: landscape) {
+  :root {
+    --gyro: row;
+    --subgyro: column;
+  }
+}
+
+@media (orientation: portrait) {
+  :root {
+    --gyro: column;
+    --subgyro: row;
+  }
+}
+
+.boxes {
+  display: flex;
+  flex-direction: var(--gyro);
+}
+
+.boxes>div {
+  flex: 1;
+}
+
+.boxed {
+  display: flex;
+  flex-direction: var(--subgyro);
+  background-color: #00c;
+}
+
+.boxed>div {
+  flex: 1;
+  background-color: #fcc;
+}
+
+.box {
+  display: flex;
+  flex-direction: var(--subgyro);
+  width: 100%;
+  overflow: hidden;
+}
+
+.box>div {
+  flex: 1;
+  min-height: 30px;
+}
+
+.box>div>div {
+  display: flex;
+  flex-direction: var(--gyro);
+}
+
+.box>div>div>div {
+  flex: 1;
+  background-color: #0c0;
+}

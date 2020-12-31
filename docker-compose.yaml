@@ -5,6 +5,8 @@ services:
     build: ./inyc_server/
     ports:
       - "3001:3001"
+    volumes:
+      - ./inyc_server:/usr/src/app
   inyc_pg:
     image: "postgres:12"
     container_name: "postgres"

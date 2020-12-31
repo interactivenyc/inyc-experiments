@@ -1,5 +1,6 @@
 :root {
     --frame-width: 450px;
+    box-sizing: border-box;
 }
 
 .form-manager {
