@@ -35,7 +35,7 @@ const FormManager = () => {
             <h1>Form Windows (to animate)</h1>
             <WindowManager>
                 <Box height="200">
-                    <h1>Box One</h1>
+                    <h1>Box One (3)</h1>
                     <div className='flex-h'>
                         <input type="text" 
                             onChange={onChange} 
