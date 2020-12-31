@@ -17,33 +17,33 @@ http.listen(3001, () => {
   console.log('listening today on *:3001');
 });
 
-// const bodyParser = require('body-parser')
-// const cors = require('cors')
+const Pool = require('pg').Pool
+const pool = new Pool({
+  host: 'postgres',
+  port: 5432,
+  user: 'postgres',
+  password: 'postgres',
+  database: 'inycdata'
+})
 
-// const Pool = require('pg').Pool
-// const pool = new Pool({
-//   host: 'postgres',
-//   port: 5432,
-//   user: 'postgres',
-//   password: 'postgres',
-//   database: 'inycdata'
-// })
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
-// app.use(cors())
-// app.use(bodyParser.json())
-// app.use(
-//   bodyParser.urlencoded({ extended: true })
-// )
+app.use(cors())
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({ extended: true })
+)
 
 
-// app.get('/test_query', (request, response) => {
-//   console.log('test_query')
+app.get('/test_query', (request, response) => {
+  console.log('test_query')
 
-//   let q = 'SELECT * FROM data ORDER BY id ASC';
-//   pool.query(q, (error, results) => {
-//     if (error) { throw error }
-//     response.status(200).json(results.rows)
-//   })
-// })
+  let q = 'SELECT * FROM data ORDER BY id ASC';
+  pool.query(q, (error, results) => {
+    if (error) { throw error }
+    response.status(200).json(results.rows)
+  })
+})
 
 
