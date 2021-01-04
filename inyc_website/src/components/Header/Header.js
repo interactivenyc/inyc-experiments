@@ -22,7 +22,7 @@ const Header = props => {
         <option value="0"> Select Experiment </option>
         {props.navItems.map((item, index) => {
           return(
-            <option key={index} value={index+1}>{item}</option>
+            <option key={index} value={index+1}>{item.name}</option>
           )
         })}
       </select>
